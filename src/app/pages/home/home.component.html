@@ -1,0 +1,71 @@
+<h2>Home</h2>
+
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, nemo deserunt. Nulla rerum, quia amet nemo molestiae consequuntur harum officiis magnam quae enim sunt quam, minus illum vel excepturi quidem!</p>
+
+
+<!--Les crochets autour de src vont nous permettre de dire à Angular qu'il y a une liaison our un objet dynamique-->
+<p><img class="img-fluid" [src]="'./assets/images/' + sourceImage" alt="photo de plage" (click)="console(sourceImage)"></p>
+
+<p><img [src]="'./assets/images/' + jsonImages[randomIndex].url" class="img-fluid" [alt]="jsonImages[randomIndex].title" (mouseover)= "changeRandom()" (mouseout)="changeRandom()" /></p>
+
+
+<!--On utilise un objet avec une clé et son paramètre-->
+<p [ngStyle]="{'color': valColor }" (click)="valColor='turquoise';">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur odit quis quo maiores quidem ipsam commodi temporibus architecto voluptatem assumenda deserunt asperiores, reiciendis reprehenderit vitae nihil repellendus quae, fugit facilis!</p>
+
+<div class="row mt-3">
+   
+    <h3>Dynamic class using ngClass</h3>
+
+<p [ngClass]="{'text-warning': textWarning}" (click)="textWarning=!textWarning">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, possimus voluptatum corrupti accusantium eius veniam perspiciatis quasi natus ipsam tempora, nam nobis recusandae repellendus voluptatibus dolor debitis suscipit, voluptates omnis.</p>
+</div>
+
+<div class="row mt-3">
+    <h3>Dynamic Display *ngIf</h3>
+    <button (click)="displayParag=!displayParag">Change the paragraph display condition</button>
+    <p *ngIf="displayParag; else otherParag">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium harum consectetur autem, eligendi ullam nesciunt magni quibusdam numquam quaerat voluptate neque culpa illo ex voluptatum? Iste eaque aspernatur placeat ducimus.</p>
+    <ng-template #otherParag>
+        <p>Ceci est un autre paragraphe</p>
+    </ng-template>
+
+</div>
+
+    <div class="row mt-3">
+        <h3>Dynamic display [ngSwitch] *ngSwitchCase</h3>
+    <div [ngSwitch]="displaySwitch">
+        <p *ngSwitchCase="1">Paragraphe 1</p>
+        <p *ngSwitchCase="2">Paragraphe 2</p>
+        <p *ngSwitchCase="3">Paragraphe 3</p>
+    </div>
+    <button (click)="incSwitch()">Click</button>
+
+    <div class="row mt-3">
+        <h3>Carousel with *ngSwitchCase</h3>
+    <div [ngSwitch]="displayCarousel">
+        <p *ngSwitchCase="1"><img src="./assets/images/riviere.jpg" alt=""></p>
+        <p *ngSwitchCase="2"><img src="./assets/images/cadenas.jpg" alt=""></p>
+        <p *ngSwitchCase="3"><img src="./assets/images/riviereville.jpg" alt=""></p>
+    </div>
+    <button class="btn btn-warning" (click)="plusCarousel()">More</button>
+    <button class="btn btn-info" (click)="moinsCarousel()">Less</button>
+
+    <div class="row mt-3">
+        <h3>Dynamic display *ngFor</h3>
+
+        <ul>
+            <li *ngFor="let line of arrayImages">Line for {{line}} <br>
+                <img [src]="'./assets/images/' + line" width="200" />
+
+            </li>
+        </ul>
+
+        <div class="row mt-3">
+            <h3>Dynamic display *ngFor on json data</h3>
+            <ul class="row">
+                <li class="col list-unstyled" *ngFor="let img of jsonImages">Line for {{img.title}}<br>
+                    <img [src]="'./assets/images/' + img.url" width="300" /><br>
+                    <span>{{img.author}}</span>
+
+                </li>
+            </ul>
+
+</div>

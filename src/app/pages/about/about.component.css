@@ -1,0 +1,9 @@
+.page-link {
+    cursor: pointer;
+    color: purple;
+}
+
+.page-item.active .page-link{
+    background-color: turquoise;
+}
+
